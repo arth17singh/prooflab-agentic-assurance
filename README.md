@@ -1,3 +1,14 @@
+> [!NOTE]
+> **About this copy.** ProofLab is team iFabric's entry to the **TM Forum Trustworthy AI & Data Hackathon 2026**, presented at TM Forum Innovate Americas 2026. The team was a **Top-5 finalist**. The original repository is [ss7172/ProofLab](https://github.com/ss7172/ProofLab). This copy keeps the `main` history and is shared with the team's permission. Third-party event material (slides, transcripts and workshop notes from the organisers and partners) was removed from every commit, and a team member's work email was replaced with a placeholder.
+>
+> **How we worked.** Satyabrat Srikumar and I (Arth Singh) worked side by side on one laptop and drove Claude Code together, so the commits show Satyabrat's account. The repo's own docs record who owned what. Satyabrat captained the AWS side (agents, orchestrator, controls and the evidence pipeline). I owned the ServiceNow, Assurance Agent and console workstream.
+>
+> **My part.** These pieces shipped byte-identical from my hand-off package, `handoffs/ifabric-handoff-3/`:
+> - **ServiceNow human-in-the-loop** (`prooflab/servicenow/`). A standard-library Python adapter (OAuth 2.0 client credentials, Table API) that turns each control breach into an idempotent, read-back-verified incident for the accountable owner. The merge gate required all 152 of its tests to pass.
+> - **Assurance Agent.** An NVIDIA Nemotron analyser that runs as the 4th Amazon Bedrock AgentCore runtime. It writes an incident note only if the model echoes nine ground-truth facts exactly.
+> - **Evidence-pack seal** (`tools/manifest.py`). A SHA-256 manifest with a verify mode. It ships inside the final evidence pack, so judges can re-check the pack offline.
+> - **Evidence Console design.** The console spec, its JSON data contracts and the case panel. The team adopted it as its judged dashboard.
+
 # ProofLab: team iFabric
 
 **TM Forum Innovate Americas 2026, Trustworthy AI track.** ProofLab is team iFabric's assurance system for three
